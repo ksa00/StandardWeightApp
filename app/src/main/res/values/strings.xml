@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">StandardWeight</string>
+    <string name="HeightText">Your Height:</string>
+    <string name="unit">cm</string>
+    <string name="ButtonName">Calculate</string>
+    <string name="AppMessage">Calculate Standard Weight</string>
+
+    <string name="InputMessage">Please enter your height.</string>
+    <string name="result_message">Standard Weight: %.2f kg</string>
+    <string name="invalid_input">Invalid input. Please enter a number.</string>
+</resources>

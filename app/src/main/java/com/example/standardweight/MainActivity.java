@@ -17,6 +17,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+
+// Constants for keys
+ private static final String PREFS_NAME = "StandardWeightApp";
+ private static final String KEY_HEIGHT = "Height_";
+ private static final String KEY_STD_WEIGHT_MSG = "STD_WEIGHT_MSG";
+
+
     private EditText heightInput;
     private TextView messageView;
     private SharedPreferences preferences;
@@ -45,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 // Load saved preferences
- preferences = getSharedPreferences("StandardWeightApp", Activity.MODE_PRIVATE);
- String savedHeight = preferences.getString("Height_", "");
+ preferences = getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
+ String savedHeight = preferences.getString(KEY_HEIGHT, "");
  heightInput.setText(savedHeight);
 
         // Button click listener
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Save height to preferences(Used When you want data even after the app closes)
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Height_", heightStr);
+                editor.putString(KEY_HEIGHT, heightStr);
                 editor.apply();
 
             } catch (NumberFormatException e) {
@@ -87,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("STD_WEIGHT_MSG", messageView.getText().toString());
+        outState.putString(KEY_STD_WEIGHT_MSG, messageView.getText().toString());
     }
     //"reading" saved data after screen orientation changes
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String restoredMessage = savedInstanceState.getString("STD_WEIGHT_MSG", "");
+        String restoredMessage = savedInstanceState.getString(KEY_STD_WEIGHT_MSG,"");
         messageView.setText(restoredMessage);
     }
 }

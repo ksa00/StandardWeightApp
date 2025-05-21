@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String restoredMessage = savedInstanceState.getString(KEY_STD_WEIGHT_MSG,"");
+        String restoredMessage = savedInstanceState.getString(KEY_STD_WEIGHT_MSG);
         messageView.setText(restoredMessage);
     }
 }

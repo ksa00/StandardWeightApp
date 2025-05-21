@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 messageView.setText(resultMessage);
 
 
-// Save height to preferences
+// Save height to preferences(Used When you want data even after the app closes)
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Height_", heightStr);
                 editor.apply();
@@ -83,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
 //            //as it is now the standard weight data will  get lost
         });
     }
-    //"saving" to prevent data loss during screen orientation change
+    //"saving" data  before screen orientation change
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("STD_WEIGHT_MSG", messageView.getText().toString());
     }
-    //"reading" to prevent data loss during screen orientation change
+    //"reading" saved data after screen orientation changes
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
